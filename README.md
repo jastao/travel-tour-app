@@ -1,4 +1,5 @@
 [![Windows Build Status](https://circleci.com/gh/jastao/travel-tour-app/tree/master.svg?style=svg)](https://circleci.com/gh/jastao/travel-tour-app/tree/master)
+[![Linux Build Status](https://travis-ci.org/jastao/travel-tour-app.svg?branch=master)](https://travis-ci.org/jastao/travel-tour-app)
 
 # Testing Spring Boot Travel Guide application
 
