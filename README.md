@@ -1,5 +1,23 @@
 [![Windows Build Status](https://circleci.com/gh/jastao/travel-tour-app/tree/master.svg?style=svg)](https://circleci.com/gh/jastao/travel-tour-app/tree/master)
 
-A REST based travel tour web application that provides various tour packages available from various cities
+# Testing Spring Boot Travel Guide application
+
+This source code repository contains working example of a Spring Boot Monolithic Application.
+
+A REST based travel guide web application that provides various tour packages available from various cities
 in US.
+
+## Setup
+### Requirements 
+
+* Should use Java 8 or higher. 
+* Maven 4.0.0 or higher
+
+### Software Stacks used
+
+* Spring Boot 2
+* Spring JPA
+* H2 
+* Mapstruct
+* Lombok
 
