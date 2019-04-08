@@ -1,7 +1,7 @@
-[![Windows Build Status](https://circleci.com/gh/jastao/travel-tour-app/tree/master.svg?style=svg)](https://circleci.com/gh/jastao/travel-tour-app/tree/master)
-[![Linux Build Status](https://travis-ci.org/jastao/travel-tour-app.svg?branch=master)](https://travis-ci.org/jastao/travel-tour-app)
-
 # Testing Spring Boot Travel Guide application
+
+##### CircleCI build status: [![Ubuntu Build Status](https://circleci.com/gh/jastao/travel-tour-app/tree/master.svg?style=svg)](https://circleci.com/gh/jastao/travel-tour-app/tree/master)
+##### TravisCI build status: [![Linux Build Status](https://travis-ci.org/jastao/travel-tour-app.svg?branch=master)](https://travis-ci.org/jastao/travel-tour-app)
 
 This source code repository contains working example of a Spring Boot Monolithic Application.
 

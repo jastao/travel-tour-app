@@ -17,10 +17,10 @@ public interface ITourPackageDetailService {
 	TourPackageDetail findById(UUID tourPackageDetailId);
 
 	TourPackageDetailDTO save(TourPackageDetailDTO tourPackageDetailDTO);
+	
+	TourPackageDetailDTO delete(UUID tourPackageId);
 
-	void delete(UUID tourPackageId);
-
-	TourPackageDetailDTO tourPackageByTourCode(String tourCode) throws Exception;
+	TourPackageDetailDTO tourPackageByTourCode(String tourCode);
 	
 	TourPackageDetailPagedList tourPackages(String depCity, Pageable request);
 	

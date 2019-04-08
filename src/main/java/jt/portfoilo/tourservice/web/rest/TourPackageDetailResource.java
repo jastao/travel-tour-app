@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -29,7 +30,7 @@ public class TourPackageDetailResource {
 	
 	private Logger logger = LoggerFactory.getLogger(TourPackageDetailResource.class);
 
-	private static final Integer DEFAULT_PAGE_NUMBER = 0;
+	private static final Integer DEFAULT_PAGE_NUMBER = 1;
 	private static final Integer DEFAULT_PAGE_SIZE = 10;
 	private static final String ENTITY_NAME = "tourPackageEntity";
 
@@ -40,7 +41,7 @@ public class TourPackageDetailResource {
 	}
 
 	@PostMapping("/tour-package-detail")
-	public ResponseEntity<TourPackageDetailDTO> createTourPackageDetail(@RequestBody TourPackageDetailDTO tourPackageDetailDTO) throws URISyntaxException {
+	public ResponseEntity<TourPackageDetailDTO> createTourPackageDetail(@Valid @RequestBody TourPackageDetailDTO tourPackageDetailDTO) throws URISyntaxException {
 
 		logger.debug("REST request to save TourPackageDetail: {}", tourPackageDetailDTO);
 		if(tourPackageDetailDTO.getId() != null) {
@@ -52,7 +53,7 @@ public class TourPackageDetailResource {
 	}
 
 	@PutMapping("/tour-package-detail")
-	public ResponseEntity<TourPackageDetailDTO> updateTourPackageDetail(@RequestBody TourPackageDetailDTO tourPackageDetailDTO) throws URISyntaxException {
+	public ResponseEntity<TourPackageDetailDTO> updateTourPackageDetail(@Valid @RequestBody TourPackageDetailDTO tourPackageDetailDTO) throws URISyntaxException {
 
 		logger.debug("REST request to update TourPackageDetail: {}", tourPackageDetailDTO);
 		if(tourPackageDetailDTO.getId() == null) {

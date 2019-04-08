@@ -30,7 +30,7 @@ public class DailyTourDetail extends BaseEntity {
     private Integer dayOfTrip;
 
     @NotNull
-    @Size( max = 100)
+    @Size( max = 300)
     private String description;
 
     @ManyToOne

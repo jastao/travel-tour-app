@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -43,7 +44,7 @@ public class TourPackageDetailService implements ITourPackageDetailService {
 	}
 	
 	@Override
-	public TourPackageDetailDTO findDtoById(UUID tourPackageDetailId) {
+	public TourPackageDetailDTO findDtoById(UUID tourPackageDetailId){
 
 		logger.debug("Request to find TourPackageDetailDTO: {}", tourPackageDetailId);
 		return tourPackageDetailMapper.tourPackageDetailToDto(findById(tourPackageDetailId));
@@ -53,7 +54,9 @@ public class TourPackageDetailService implements ITourPackageDetailService {
 	public TourPackageDetail findById(UUID tourPackageDetailId) {
 
 		logger.debug("Request to find TourPackageDetail: {}", tourPackageDetailId);
-		TourPackageDetail tourPackageDetail = tourPackageDetailRepository.getOne(tourPackageDetailId);
+		TourPackageDetail tourPackageDetail =
+				tourPackageDetailRepository.findById(tourPackageDetailId)
+					.orElseThrow( () -> new TourPackageNotFoundException("No tour package with id: " + tourPackageDetailId) );
 		return tourPackageDetail;
 	}
 
@@ -67,14 +70,22 @@ public class TourPackageDetailService implements ITourPackageDetailService {
 	}
 	
 	@Override
-	public void delete(UUID tourPackageId) {
-		logger.debug("Request to delete TourPackageDetail : {}", tourPackageId);
-		tourPackageDetailRepository.deleteById(tourPackageId);
+	public TourPackageDetailDTO delete(UUID tourPackageDetailId) {
+		
+		logger.debug("Request to delete TourPackageDetail : {}", tourPackageDetailId);
+		
+		TourPackageDetail deleted
+				= tourPackageDetailRepository.findById(tourPackageDetailId)
+					.orElseThrow( () -> new TourPackageNotFoundException("No tour package with id: " + tourPackageDetailId));
+		
+		tourPackageDetailRepository.delete(deleted);
+		
+		return tourPackageDetailMapper.tourPackageDetailToDto(deleted);
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
-	public TourPackageDetailDTO tourPackageByTourCode(String tourCode) throws Exception {
+	public TourPackageDetailDTO tourPackageByTourCode(String tourCode) {
 		
 		logger.debug("Request to retrieve tour package.");
 		TourPackageInfo tourPackageInfo = this.tourPackageRepository.findByTourCode(tourCode)
@@ -93,7 +104,7 @@ public class TourPackageDetailService implements ITourPackageDetailService {
 		TourPackageDetailPagedList tourPackageDetailPageList;
 		Page<TourPackageDetail> tourPackageDetailPage;
 		
-		if (!StringUtils.isEmpty(depCity)) {
+		if (!StringUtils.isEmpty(depCity) || depCity != null) {
 			tourPackageDetailPage = tourPackageDetailRepository.findByDepartureCity(depCity, request);
 		} else {
 			tourPackageDetailPage = tourPackageDetailRepository.findAll(request);

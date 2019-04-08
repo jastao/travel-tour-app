@@ -18,6 +18,9 @@
 		<java.version>1.8</java.version>
 		<mapstruct.version>1.2.0.Final</mapstruct.version>
 		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+		<swagger2.version>2.0.1</swagger2.version>
+		<junit5.version>5.4.0</junit5.version>
+		<surefire.version>2.22.0</surefire.version>
 	</properties>
 
 	<dependencies>
@@ -53,6 +56,13 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- Web -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger2.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
@@ -68,6 +78,17 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit5.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.metadata</groupId>
+			<artifactId>jboss-metadata-common</artifactId>
+			<version>10.0.2.Final</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -90,7 +111,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${surefire.version}</version>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
