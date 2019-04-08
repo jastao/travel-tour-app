@@ -3,4 +3,4 @@ jdk:
   - oraclejdk8
 
 script:
-  - ./mvnw clean compile
+  - ./mvnw clean test compile
